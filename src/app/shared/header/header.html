@@ -1,0 +1,17 @@
+<p-menubar [model]="items">
+    <ng-template pTemplate="start">
+        <div class="logo">
+            <img src="public/favicon.ico" alt="Rangapatashala Logo" style="height: 40px; margin-right: 10px;">
+            <div>
+                <span>Rangapatashala</span>
+                <div class="tagline">Reliable • Affordable Education</div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="flex align-items-center">
+            <p-toggleswitch  [(ngModel)]="isDarkMode" (onChange)="toggleTheme()"></p-toggleswitch >
+            <p-button class="p-button p-button-primary ml-2">LOGIN / REGISTER</p-button>
+        </div>
+    </ng-template>
+</p-menubar>

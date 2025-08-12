@@ -1,0 +1,38 @@
+.hero-section {
+  background-color: var(--surface-section);
+  color: var(--text-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.neet {
+  background-color: #4d84e2;
+}
+
+.jee {
+  background-color: #f0ad4e;
+}
+
+.board {
+  background-color: #d9534f;
+}
+
+:host ::ng-deep .p-card {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    color: var(--text-color);
+}
+
+:host ::ng-deep .p-card .p-card-body {
+    padding: 1rem;
+}
+
