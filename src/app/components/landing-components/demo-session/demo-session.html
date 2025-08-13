@@ -1,0 +1,145 @@
+<div class="px-4 py-6 md:px-6 lg:px-8" [style.color]="'var(--text-color)'">
+  <a routerLink="/" class="secondary-text" style="text-decoration:none">
+    <i class="pi pi-chevron-left mr-2"></i>
+    Back to Home
+  </a>
+
+  <h1 class="text-center text-3xl md:text-4xl font-bold mt-3">Book Your Learning Journey</h1>
+  <p class="text-center text-xl secondary-text mt-2">Start your educational journey with Rangapatashala. Choose between a free demo session or inquire about our comprehensive courses.</p>
+
+  <div class="grid mt-4">
+    <div class="col-12 md:col-6 p-3">
+      <div class="option-card" [class.active]="selectedFlow === 'demo'" (click)="selectedFlow = 'demo'">
+        <div class="flex align-items-start gap-3">
+          <i class="pi pi-calendar text-2xl" style="color: var(--primary-color)"></i>
+          <div>
+            <div class="font-bold mb-1">Free Demo Session</div>
+            <div class="secondary-text">Experience our teaching methodology</div>
+            <ul class="secondary-text mt-3">
+              <li>1-hour interactive session</li>
+              <li>Meet your potential teacher</li>
+              <li>Personalized learning assessment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+      <div class="option-card" [class.active]="selectedFlow === 'enroll'" (click)="selectedFlow = 'enroll'">
+        <div class="flex align-items-start gap-3">
+          <i class="pi pi-book text-2xl" style="color: var(--primary-color)"></i>
+          <div>
+            <div class="font-bold mb-1">Course Enrollment</div>
+            <div class="secondary-text">Join our comprehensive programs</div>
+            <ul class="secondary-text mt-3">
+              <li>Complete curriculum coverage</li>
+              <li>Regular assessments</li>
+              <li>Dedicated support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card mt-3">
+    <div class="flex align-items-center gap-2 mb-3">
+      <i class="pi" [ngClass]="selectedFlow === 'demo' ? 'pi-calendar' : 'pi-book'" style="color: var(--primary-color)"></i>
+      <div class="font-medium">{{ selectedFlow === 'demo' ? 'Demo Session Request' : 'Course Enrollment Inquiry' }}</div>
+    </div>
+    <div class="secondary-text mb-3">Provide your information to proceed</div>
+
+    <form class="grid" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="col-12 md:col-6">
+        <label class="block mb-2">Student Name *</label>
+        <input class="w-full" type="text" pInputText placeholder="Enter student's full name" formControlName="studentName" />
+        <div class="field-error" *ngIf="form.get('studentName')?.touched && form.get('studentName')?.invalid">Student name is required.</div>
+      </div>
+      <div class="col-12 md:col-6">
+        <label class="block mb-2">Parent/Guardian Name *</label>
+        <input class="w-full" type="text" pInputText placeholder="Enter parent's full name" formControlName="parentName" />
+        <div class="field-error" *ngIf="form.get('parentName')?.touched && form.get('parentName')?.invalid">Parent/Guardian name is required.</div>
+      </div>
+      <div class="col-12 md:col-6">
+        <label class="block mb-2">Email Address *</label>
+        <input class="w-full" type="email" pInputText placeholder="your.email@example.com" formControlName="email" />
+        <div class="field-error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Enter a valid email.</div>
+      </div>
+      <div class="col-12 md:col-6">
+        <label class="block mb-2">Phone Number *</label>
+        <input class="w-full" type="text" pInputText placeholder="+1 (234) 567-8900" formControlName="phone" />
+        <div class="field-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">Enter a valid phone number.</div>
+      </div>
+      <div class="col-12 md:col-6">
+        <label class="block mb-2">Student Age</label>
+        <input class="w-full" type="number" pInputText placeholder="Age in years" formControlName="age" />
+        <div class="field-error" *ngIf="form.get('age')?.touched && form.get('age')?.invalid">Age must be between 3 and 25.</div>
+      </div>
+      <div class="col-12 md:col-6"></div>
+      <div class="col-12">
+        <label class="block mb-2">Course *</label>
+        <p-select [options]="courses" formControlName="course" optionLabel="label" optionValue="value" placeholder="Select a course"></p-select>
+        <div class="field-error" *ngIf="form.get('course')?.touched && form.get('course')?.invalid">Please select a course.</div>
+      </div>
+      <div class="col-12">
+        <label class="block mb-2">Current Grade/Standard</label>
+        <input class="w-full" type="text" pInputText placeholder="e.g., Class 10, 12th, College 1st year" formControlName="grade" />
+      </div>
+
+      <div class="col-12 md:col-6" *ngIf="selectedFlow === 'demo'">
+        <label class="block mb-2">Preferred Date</label>
+        <p-datepicker formControlName="demoDate" inputId="demo-date" [showIcon]="true"></p-datepicker>
+      </div>
+      <div class="col-12 md:col-6" *ngIf="selectedFlow === 'demo'">
+        <label class="block mb-2">Preferred Time</label>
+        <p-select [options]="timeSlots" formControlName="timeSlot" optionLabel="label" optionValue="value" placeholder="Select time slot"></p-select>
+      </div>
+
+      <div class="col-12" *ngIf="selectedFlow === 'demo'">
+        <label class="block mb-2">Specific Topics of Interest</label>
+        <textarea pTextarea rows="3" placeholder="Any specific topics you'd like to cover in the demo session?" formControlName="topics"></textarea>
+      </div>
+
+      <div class="col-12" *ngIf="selectedFlow === 'enroll'">
+        <label class="block mb-2">Preferred Start Date</label>
+        <p-datepicker formControlName="startDate" inputId="start-date" [showIcon]="true"></p-datepicker>
+      </div>
+      <div class="col-12 md:col-6" *ngIf="selectedFlow === 'enroll'">
+        <label class="block mb-2">Course Duration</label>
+        <p-select [options]="[{label: '6 months', value: '6m'}, {label: '1 year', value: '1y'}]" formControlName="duration" placeholder="Select duration"></p-select>
+      </div>
+      <div class="col-12" *ngIf="selectedFlow === 'enroll'">
+        <label class="block mb-2">Previous Learning Experience</label>
+        <textarea pTextarea rows="3" placeholder="Tell us about any previous coaching, online courses, or self-study experience" formControlName="previousExperience"></textarea>
+      </div>
+
+      <div class="col-12">
+        <label class="block mb-2">Preferred Days</label>
+        <div class="flex align-items-center gap-2 flex-wrap">
+          <button type="button" class="chip" *ngFor="let d of preferredDays" [class.active]="isDaySelected(d)" (click)="toggleDay(d)">{{ d }}</button>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label class="block mb-2">Learning Goals & Expectations</label>
+        <textarea pTextarea rows="3" placeholder="What do you hope to achieve? Any specific goals or expectations?" formControlName="goals"></textarea>
+      </div>
+      <div class="col-12">
+        <label class="block mb-2">Special Requirements or Accommodations</label>
+        <textarea pTextarea rows="3" placeholder="Any special learning needs, accessibility requirements, or other considerations" formControlName="requirements"></textarea>
+      </div>
+
+      <div class="col-12">
+        <div class="flex align-items-center gap-2">
+          <p-checkbox formControlName="agree" binary="true"></p-checkbox>
+          <span>I agree to the <a href="#" class="primary-text">Terms of Service</a> and <a href="#" class="primary-text">Privacy Policy</a></span>
+        </div>
+        <div class="field-error" *ngIf="form.get('agree')?.touched && form.get('agree')?.invalid">You must agree before submitting.</div>
+      </div>
+      <div class="col-12">
+        <p-button [style]="{ width: '100%' }" type="submit" [label]="selectedFlow === 'demo' ? 'Book Demo Session' : 'Submit Enrollment Inquiry'"></p-button>
+      </div>
+    </form>
+  </div>
+</div>
+

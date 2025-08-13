@@ -1,33 +1,32 @@
-import { Component, inject } from '@angular/core';
-import { MenubarModule } from 'primeng/menubar';
-import { MenuItem } from 'primeng/api';
-import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../theme.service';
-import { Button } from "primeng/button";
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-menu-bar',
   standalone: true,
-  imports: [MenubarModule, ToggleSwitchModule, FormsModule, Button],
+  imports: [
+    CommonModule,
+    ToggleSwitchModule ,
+    FormsModule
+  ],
   templateUrl: './header.html',
-  styleUrl: './header.scss'
+  styleUrls: ['./header.scss']
 })
-export class Header {
-  items: MenuItem[];
-  themeService = inject(ThemeService);
-  isDarkMode = this.themeService.isDarkMode;
+export class MenuBarComponent {
+  items = [
+    { label: 'Home', icon: 'pi pi-fw pi-home' },
+    { label: 'Courses', icon: 'pi pi-fw pi-calendar' },
+    { label: 'Wall of Love', icon: 'pi pi-fw pi-pencil' },
+    { label: 'Contact', icon: 'pi pi-fw pi-file' }
+  ];
 
-  constructor() {
-    this.items = [
-      { label: 'Home', routerLink: ['/'] },
-      { label: 'Courses', routerLink: ['/courses'] },
-      { label: 'Wall of Love', routerLink: ['/wall-of-love'] },
-      { label: 'Contact', routerLink: ['/contact'] }
-    ];
-  }
+  constructor(public themeService: ThemeService) {}
 
-  toggleTheme() {
+  onThemeSwitchChange() {
     this.themeService.toggleTheme();
   }
 }

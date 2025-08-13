@@ -1,0 +1,66 @@
+.option-card {
+  background: var(--surface-section);
+  color: var(--text-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.option-card.active {
+  box-shadow: 0 0 0 2px var(--primary-color) inset;
+}
+
+.chip {
+  background: var(--surface-card);
+  color: var(--text-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: .25rem .5rem;
+  cursor: pointer;
+}
+
+.form-card {
+  background: var(--surface-section);
+  color: var(--text-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.chip.active {
+  outline: 2px solid var(--primary-color);
+  background: var(--surface-hover);
+  color: var(--text-color);
+}
+
+.field-error {
+  color: #f87171;
+  font-size: .875rem;
+  margin-top: .25rem;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+.p-select.ng-invalid.ng-touched .p-inputtext {
+  border-color: #f87171 !important;
+}
+
+/* Ensure inputs follow theme variables (works for both light/dark) */
+.form-card :where(.p-inputtext, textarea) {
+  background: var(--surface-card) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--surface-border) !important;
+}
+
+.form-card :where(.p-inputtext, textarea)::placeholder {
+  color: var(--text-color-secondary) !important;
+}
+
+.form-card .p-select {
+  background: var(--surface-card) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: 6px;
+}
+

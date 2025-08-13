@@ -1,0 +1,49 @@
+/* Rangapatashala Theme Overrides */
+
+body {
+  /*
+   * New Theme Variables
+   * --------------------------------------------------
+   */
+  --background-color: #1C2331;
+  --text-color-rgb: 245, 245, 245;
+  --text-color: #F5F5F5;
+  --primary-color: #A4C639; /* Lime Green */
+  --secondary-color: #5a6268;
+  --header-background: #283142;
+  --footer-background: #161c27;
+  --font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+
+  /*
+   * PrimeNG Variable Overrides
+   * --------------------------------------------------
+   */
+  --surface-ground: var(--background-color);
+  --surface-section: var(--header-background);
+  --surface-card: var(--header-background);
+  --surface-overlay: var(--header-background);
+  --surface-border: #334155;
+  --surface-hover: #334155;
+  --text-color: var(--text-color);
+  --text-color-secondary: rgba(var(--text-color-rgb), 0.7);
+  --primary-color-text: #ffffff;
+}
+
+/*
+ * Component-Specific Overrides
+ * --------------------------------------------------
+ */
+.p-button {
+    font-weight: bold;
+}
+
+.p-button.p-button-outlined {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.p-button.p-button-outlined:hover {
+    background: rgba(164, 198, 57, 0.1);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}

@@ -1,17 +1,20 @@
-<p-menubar [model]="items">
-    <ng-template pTemplate="start">
-        <div class="logo">
-            <img src="public/favicon.ico" alt="Rangapatashala Logo" style="height: 40px; margin-right: 10px;">
-            <div>
-                <span>Rangapatashala</span>
-                <div class="tagline">Reliable • Affordable Education</div>
-            </div>
-        </div>
-    </ng-template>
-    <ng-template pTemplate="end">
-        <div class="flex align-items-center">
-            <p-toggleswitch  [(ngModel)]="isDarkMode" (onChange)="toggleTheme()"></p-toggleswitch >
-            <p-button class="p-button p-button-primary ml-2">LOGIN / REGISTER</p-button>
-        </div>
-    </ng-template>
-</p-menubar>
+<header class="px-4 py-3 md:px-6 lg:px-8 shadow-2 flex align-items-center justify-content-between" [style.background-color]="'var(--surface-section)'">
+  <a class="flex align-items-center" href="#">
+    <i class="pi pi-book text-xl mr-2" [style.color]="'var(--primary-color)'"></i>
+    <span class="text-2xl font-bold" [style.color]="'var(--text-color)'">Rangapatashala</span>
+  </a>
+  
+  <div class="flex align-items-center gap-3">
+    <nav class="custom-menubar">
+      <ul class="menu-list">
+        <li class="menu-item" *ngFor="let item of items">
+          <a href="#" class="menu-link">
+            <i [ngClass]="item.icon" class="mr-2"></i>
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <p-toggleSwitch [ngModel]="themeService.isDarkMode()" (onChange)="onThemeSwitchChange()"></p-toggleSwitch>
+  </div>
+</header>

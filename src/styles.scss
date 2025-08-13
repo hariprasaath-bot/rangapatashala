@@ -1,36 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+==============================================
+Rangapatashala - Global Theme Definitions
+==============================================
+*/
+
+/*
+ * 1. Light Theme (Default)
+ * ------------------------------------------
+ */
+ @import "primeicons/primeicons.css";
 :root {
-  --primary-color: #4d84e2;
-  --background-color: #ffffff;
-  --surface-ground: #eff3f8;
-  --surface-section: #ffffff;
-  --surface-card: #ffffff;
-  --surface-overlay: #ffffff;
-  --surface-border: #dfe7ef;
-  --surface-hover: #f6f9fc;
-  --text-color: #343a40;
-  --text-color-secondary: #6c757d;
-  --primary-color-text: #ffffff;
+  --header-height: 64px;
+  --primary-color: #86A819; /* Darker Lime Green for better contrast */
+  --primary-color-text: #FFFFFF;
+  
+  --surface-ground: #F8F9FA; /* Off-White Background */
+  --surface-section: #FFFFFF; /* White for cards/headers */
+  --surface-card: #FFFFFF;
+  --surface-overlay: #FFFFFF;
+  --surface-border: #DEE2E6;
+  --surface-hover: #E9ECEF;
+
+  --text-color: #212529; /* Near Black */
+  --text-color-secondary: #6C757D; /* Gray */
+
+  --font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  --p-menubar-color:var(--text-color) !important;
 }
 
+/*
+ * 2. Dark Theme
+ * ------------------------------------------
+ */
 body.dark-theme {
-  --primary-color: #4d84e2;
-  --background-color: #1a233a;
-  --surface-ground: #121a2a;
-  --surface-section: #1a233a;
-  --surface-card: #1a233a;
-  --surface-overlay: #121a2a;
-  --surface-border: #3a4a6b;
-  --surface-hover: #2a3a5a;
-  --text-color: #ffffff;
-  --text-color-secondary: #c0c0c0;
-  --primary-color-text: #ffffff;
+  --primary-color: #A4C639; /* Lime Green */
+  --primary-color-text: #1C2331;
+  
+  --surface-ground: #1C2331; /* Dark Blue-Gray Background */
+  --surface-section: #283142; /* Lighter Blue-Gray for cards/headers */
+  --surface-card: #283142;
+  --surface-overlay: #283142;
+  --surface-border: #334155;
+  --surface-hover: #334155;
+
+  --text-color: #F5F5F5; /* Off-White */
+  --text-color-secondary: rgba(245, 245, 245, 0.7);
+  --p-menubar-color:var(--text-color) !important;
 }
 
+/*
+ * 3. Global Styles & Custom Classes
+ * ------------------------------------------
+ */
 body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+  font-family: var(--font-family, 'Poppins', sans-serif);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+main {
+  padding-top: var(--header-height);
+}
+
+.hero-section {
+  background-color: var(--surface-section);
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.secondary-text {
+  color: var(--text-color-secondary);
+}

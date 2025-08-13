@@ -1,59 +1,35 @@
-header {
-  background-color: #1a233a;
-  padding: 20px 40px;
-  color: white;
+/* Custom Menubar */
+.custom-menubar {
+    background-color: transparent;
+}
 
-  nav {
+.custom-menubar .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 1rem;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      img {
-        height: 40px;
-        margin-right: 10px;
-      }
-      div {
-        display: flex;
-        flex-direction: column;
-        .tagline {
-          font-size: 0.8rem;
-          color: #c0c0c0;
-        }
-      }
-    }
 
-    ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
 
-      a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-      }
-    }
+.custom-menubar .menu-link {
+    display: inline-block;
+    padding: .5rem .75rem;
+    border-radius: .5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color .2s ease;
+}
 
-    .actions {
-      .settings {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        margin-right: 20px;
-      }
-      .login {
-        background-color: #4d84e2;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-      }
-    }
-  }
+.custom-menubar .menu-link:hover {
+    background-color: var(--surface-hover);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
