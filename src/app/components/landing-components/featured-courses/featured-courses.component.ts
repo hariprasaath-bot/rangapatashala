@@ -1,35 +1,29 @@
 import { Component } from '@angular/core';
-import { CourseCardComponent } from './course-card/course-card.component';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
+import { CourseCardComponent } from '../../courses/course-card/course-card.component';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.html',
-  styleUrls: ['./courses.scss'],
+  selector: 'app-featured-courses',
   standalone: true,
-  imports: [CourseCardComponent, CommonModule, ButtonModule],
+  imports: [CommonModule, CourseCardComponent, ButtonModule],
+  templateUrl: './featured-courses.component.html',
+  styleUrls: ['./featured-courses.component.scss']
 })
-export class CoursesComponent {
-  constructor(private router: Router) {}
-
-  courses = [
+export class FeaturedCoursesComponent {
+  
+  allCourses = [
     {
       title: 'NEET Preparation',
       description: 'Comprehensive preparation for medical college entrance with Biology, Chemistry, and Physics.',
       rating: 4.8,
       duration: '1-2 Years',
       students: '450+ students',
-      price: '₹15,000/month',
+      price: '15,000',
       image: 'assets/neet.jpg',
       tags: ['Competitive'],
-      features: [
-        'Complete syllabus coverage',
-        'Daily practice tests',
-        'Doubt clearing sessions'
-      ],
-      age: 'For Grades 11-12'
+      featured: true
     },
     {
       title: 'JEE Mains Preparation',
@@ -37,15 +31,10 @@ export class CoursesComponent {
       rating: 4.9,
       duration: '1-2 Years',
       students: '520+ students',
-      price: '₹12,000/month',
+      price: '12,000',
       image: 'assets/jee.jpg',
       tags: ['Competitive', 'Advanced'],
-      features: [
-        'PCM expert faculty',
-        'Concept building focus',
-        'Advanced problem solving'
-      ],
-      age: 'For Grades 11-12'
+      featured: true
     },
     {
       title: 'Class 10th Board Preparation',
@@ -53,17 +42,20 @@ export class CoursesComponent {
       rating: 4.7,
       duration: '1 Year',
       students: '320+ students',
-      price: '₹10,000/month',
+      price: '10,000',
       image: 'assets/class10.jpg',
       tags: ['Foundation', 'Intermediate'],
-      features: [
-        'All subjects covered',
-        'Board exam patterns',
-        'Regular assessments'
-      ],
-      age: 'For Grade 10'
+      featured: true
     }
   ];
+
+  featuredCourses = this.allCourses.filter(course => course.featured);
+
+  constructor(private router: Router) {}
+
+  viewAllCourses() {
+    this.router.navigate(['/courses']);
+  }
 
   onDemo(course: any) {
     this.router.navigate(['/demo-session'], { queryParams: { flow: 'demo', course: course.title } });
@@ -71,13 +63,5 @@ export class CoursesComponent {
 
   onEnroll(course: any) {
     this.router.navigate(['/demo-session'], { queryParams: { flow: 'enroll', course: course.title } });
-  }
-
-  bookDemo() {
-    this.router.navigate(['/demo-session']);
-  }
-
-  contactCounselor() {
-    this.router.navigate(['/contact']);
   }
 }

@@ -5,16 +5,23 @@
   </a>
   
   <div class="flex align-items-center gap-3">
-    <nav class="custom-menubar">
+    <button class="mobile-menu-toggle" type="button" (click)="mobileMenu = !mobileMenu">
+      <i class="pi pi-bars"></i>
+    </button>
+    <nav class="custom-menubar" [class.mobile-active]="mobileMenu" #menuBarNav>
       <ul class="menu-list">
         <li class="menu-item" *ngFor="let item of items">
-          <a href="#" class="menu-link">
+          <a [routerLink]="item.routerLink" class="menu-link">
             <i [ngClass]="item.icon" class="mr-2"></i>
             {{ item.label }}
           </a>
         </li>
       </ul>
     </nav>
-    <p-toggleSwitch [ngModel]="themeService.isDarkMode()" (onChange)="onThemeSwitchChange()"></p-toggleSwitch>
+    <button class="theme-toggle-btn" type="button" (click)="onThemeSwitchChange()" [attr.aria-label]="themeService.isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'">
+      <span class="icon-wrapper">
+        <i class="pi" [ngClass]="themeService.isDarkMode() ? 'pi-moon' : 'pi-sun'" [class.sun-active]="!themeService.isDarkMode()" [class.moon-active]="themeService.isDarkMode()"></i>
+      </span>
+    </button>
   </div>
 </header>

@@ -2,7 +2,7 @@
     <div class="text-center">
         <div class="primary-text font-bold mb-3"><i class="pi pi-book"></i>&nbsp;Our Courses</div>
         <div class="font-bold text-5xl mb-3">Explore Our Diverse Range of Courses</div>
-        <div class="secondary-text text-2xl mb-5">From classical dance forms to contemporary acting techniques, our courses are designed to cater to all skill levels and interests.</div>
+        <div class="secondary-text text-2xl mb-5">Choose from our comprehensive range of courses designed to help you achieve your academic goals. From competitive exam preparation to strong foundational learning.</div>
     </div>
 
     <div class="grid">
@@ -14,11 +14,25 @@
               [duration]="course.duration"
               [students]="course.students"
               [price]="course.price"
+              [image]="course.image"
+              [tags]="course.tags"
+              [features]="course.features"
+              [age]="course.age"
+              (demo)="onDemo(course)"
+              (enroll)="onEnroll(course)"
             ></app-course-card>
         </div>
     </div>
 
-    <div class="flex justify-content-center mt-4">
-        <button pButton label="View All Courses" class="p-button-outlined"></button>
+    <div class="not-sure-card mt-8 flex justify-content-center">
+        <div class="card-content">
+            <h3 class="text-2xl font-bold mb-2" style="color: #7ed957;">Not Sure Which Course is Right for You?</h3>
+            <p class="text-color-secondary mb-4">Book a free consultation session with our academic counselors. We’ll help you choose the perfect course based on your goals and current level.</p>
+            <div class="flex gap-3">
+                <button pButton type="button" label="Book Free Demo Session" icon="pi pi-calendar" class="p-button-success" (click)="bookDemo()"></button>
+                <button pButton type="button" label="Contact Counselor" class="p-button-outlined" (click)="contactCounselor()"></button>
+            </div>
+        </div>
     </div>
+
 </div>

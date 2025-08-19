@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 ;
 import { CheckboxModule } from 'primeng/checkbox';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DatePickerModule } from 'primeng/datepicker';
 import { InputTextModule } from 'primeng/inputtext';
@@ -29,7 +29,7 @@ import { TextareaModule } from 'primeng/textarea';
     InputTextModule
   ]
 })
-export class DemoSessionComponent {
+export class DemoSessionComponent implements OnInit {
   form!: FormGroup;
   selectedFlow: 'demo' | 'enroll' = 'demo';
   demoDate?: Date;
@@ -39,9 +39,9 @@ export class DemoSessionComponent {
   selectedDuration?: string;
 
   courses = [
-    { label: 'NEET Preparation', value: 'neet' },
-    { label: 'JEE Mains Preparation', value: 'jee' },
-    { label: 'Class 10th Board Preparation', value: 'class10' }
+    { label: 'NEET Preparation', value: 'NEET Preparation' },
+    { label: 'JEE Mains Preparation', value: 'JEE Mains Preparation' },
+    { label: 'Class 10th Board Preparation', value: 'Class 10th Board Preparation' }
   ];
 
   timeSlots = [
@@ -60,7 +60,7 @@ export class DemoSessionComponent {
     'Sunday'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
     this.form = this.fb.group({
       studentName: ['', Validators.required],
       parentName: ['', Validators.required],
@@ -79,6 +79,17 @@ export class DemoSessionComponent {
       goals: [''],
       requirements: [''],
       agree: [false, Validators.requiredTrue]
+    });
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params['flow']) {
+        this.selectedFlow = params['flow'];
+      }
+      if (params['course']) {
+        this.form.get('course')?.setValue(params['course']);
+      }
     });
   }
 

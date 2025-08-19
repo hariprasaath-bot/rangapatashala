@@ -1,0 +1,51 @@
+:host {
+    display: block;
+    padding: 4rem 2rem;
+    background-color: var(--surface-ground);
+    color: var(--text-color);
+  }
+  
+  .featured-courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  
+    .header {
+      margin-bottom: 3rem;
+  
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        font-size: 1.125rem;
+        color: var(--text-color-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+  
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+  
+    .footer {
+      button {
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        transition: background-color 0.3s, color 0.3s;
+  
+        &:hover {
+          background-color: var(--primary-color);
+          color: var(--surface-card);
+        }
+      }
+    }
+  }
+  

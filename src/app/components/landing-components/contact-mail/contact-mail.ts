@@ -3,10 +3,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.html',
-  styleUrls: ['./contact.scss'],
+  selector: 'app-contact-mail',
+  templateUrl: './contact-mail.html',
+  styleUrls: ['./contact-mail.scss'],
   standalone: true,
   imports: [InputTextModule, ButtonModule]
 })
-export class ContactComponent {}
+export class ContactMailComponent {}

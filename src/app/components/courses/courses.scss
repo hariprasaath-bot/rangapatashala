@@ -9,3 +9,12 @@
 .secondary-text {
 	color: var(--text-color-secondary);
 }
+
+.not-sure-card {
+    background: var(--surface-card);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(255,255,255,0.1);
+}

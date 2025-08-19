@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 
 import { WhyChooseUsComponent } from '../why-choose-us/why-choose-us.component';
-import { CoursesComponent } from '../../courses/courses';
 import { WallOfLoveComponent } from '../wall-of-love/wall-of-love';
-import { ContactComponent } from '../contact/contact';
 import { ButtonModule } from 'primeng/button';
 import { HeroComponent } from '../hero/hero';
+import { ContactMailComponent } from '../contact-mail/contact-mail';
+import { FeaturedCoursesComponent } from '../featured-courses/featured-courses.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeroComponent, WhyChooseUsComponent, CoursesComponent, WallOfLoveComponent, ContactComponent, ButtonModule],
+  imports: [HeroComponent, WhyChooseUsComponent, WallOfLoveComponent, ContactMailComponent, ButtonModule, FeaturedCoursesComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

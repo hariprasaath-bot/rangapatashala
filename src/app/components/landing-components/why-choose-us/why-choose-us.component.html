@@ -1,0 +1,19 @@
+<div class="why-choose-us-container text-center py-8 px-4 md:px-6 lg:px-8">
+  <h2 class="text-4xl font-bold mb-3">Why Choose Rangapatashala?</h2>
+  <p class="text-xl text-color-secondary mb-6">We specialize in academic excellence for competitive exams and board
+      preparations. Quality education with proven results at affordable prices.</p>
+
+  <div class="grid">
+      <div *ngFor="let reason of reasons" class="col-12 md:col-6 lg:col-3 p-3">
+          <div class="reason-card h-full" [ngClass]="{'highlighted': reason.highlighted}">
+              <div class="card-content">
+                  <div class="icon-wrapper">
+                      <i class="pi {{ reason.icon }}"></i>
+                  </div>
+                  <h3 class="text-xl font-bold">{{ reason.title }}</h3>
+                  <p class="text-color-secondary">{{ reason.description }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

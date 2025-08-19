@@ -1,19 +1,44 @@
-<p-card styleClass="shadow-2 course-card">
-    <ng-template pTemplate="header">
-        <div class="flex justify-content-between align-items-start p-3" style="height: 150px;">
-            <span class="badge" style="background: var(--surface-card); border:1px solid var(--surface-border); border-radius: 6px; padding: .25rem .5rem;">Competitive</span>
-            <i [class]="'pi ' + getIcon(title) + ' primary-text'" style="font-size: 3rem"></i>
-        </div>
-    </ng-template>
-    <h4 class="font-bold">{{ title }}</h4>
-    <p class="secondary-text">{{ description }}</p>
-    <div class="flex align-items-center gap-3 text-sm mt-3 secondary-text">
-        <span><i class="pi pi-clock mr-1"></i>{{ duration }}</span>
-        <span><i class="pi pi-users mr-1"></i>{{ students }}</span>
-        <span class="ml-auto"><i class="pi pi-star-fill mr-1" style="color: var(--primary-color)"></i>{{ rating }}</span>
+<div class="course-card-container">
+  <div class="card-header">
+    <div class="tag-badges">
+      <span class="competitive-badge">Competitive</span>
     </div>
-    <div class="flex align-items-center justify-content-between mt-3">
-        <div class="text-xl font-semibold primary-text">{{ price }}</div>
-        <p-button label="Learn More" [outlined]="true"></p-button>
+    <div class="icon-badge">
+      <i class="pi pi-book"></i>
     </div>
-</p-card>
+  </div>
+
+  <div class="card-image-wrapper">
+    <img [src]="image || fallbackImage" (error)="onImgError($any($event.target))" loading="lazy" class="course-image" alt="{{ title }}" />
+  </div>
+
+  <div class="card-content">
+    <h3 class="course-title">{{ title }}</h3>
+    <p class="course-description">{{ description }}</p>
+    
+    <div class="course-meta">
+      <div class="meta-row">
+        <span class="rating">
+          <i class="pi pi-star-fill"></i>
+          <span>{{ rating }}</span>
+        </span>
+        <span class="duration">
+          <i class="pi pi-clock"></i>
+          <span>{{ duration }}</span>
+        </span>
+        <span class="students">
+          <i class="pi pi-users"></i>
+          <span>{{ students }}</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="course-footer">
+      <div class="price">₹{{ price }}/month</div>
+      <div class="flex gap-2">
+        <button pButton type="button" label="Demo" class="p-button-outlined demo-btn" (click)="demo.emit()"></button>
+        <button pButton type="button" label="Enroll Now" class="enroll-btn" (click)="enroll.emit()"></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="featured-courses-container">
+  <div class="header">
+    <h2>Our Featured Courses</h2>
+    <p>From competitive exam preparation to strong foundational learning, we offer courses for every academic goal.</p>
+  </div>
+  <div class="courses-grid">
+    <app-course-card 
+      *ngFor="let course of featuredCourses" 
+      [title]="course.title"
+      [description]="course.description"
+      [rating]="course.rating"
+      [duration]="course.duration"
+      [students]="course.students"
+      [price]="course.price"
+      [image]="course.image"
+      [tags]="course.tags"
+      (demo)="onDemo(course)"
+      (enroll)="onEnroll(course)">
+    </app-course-card>
+  </div>
+  <div class="footer">
+    <button pButton type="button" label="View All Courses" icon="pi pi-arrow-right" iconPos="right" (click)="viewAllCourses()"></button>
+  </div>
+</div>

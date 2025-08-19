@@ -1,0 +1,141 @@
+<div class="contact-page p-4 md:p-8">
+  <div class="text-center mb-6">
+    <h1 class="text-5xl font-bold">Contact Us</h1>
+    <p class="text-xl text-color-secondary mt-3">Have questions about our courses? Need help choosing the right learning
+      path?<br>Our education counselors are here to guide you every step of the way.</p>
+  </div>
+
+  <div class="grid justify-content-center mb-6">
+    <div class="col-12 md:col-6 lg:col-3" *ngFor="let card of supportCards">
+      <p-card styleClass="h-full text-center">
+        <ng-template pTemplate="header">
+          <i [class]="'pi ' + card.icon + ' text-4xl text-primary mt-4'"></i>
+        </ng-template>
+        <h3 class="text-xl font-bold">{{ card.title }}</h3>
+        <p class="text-color-secondary">{{ card.description }}</p>
+        <div class="my-3">
+          <div [innerHTML]="card.detail"></div>
+          <span class="text-sm text-color-secondary">{{ card.subDetail }}</span>
+        </div>
+        <ng-template pTemplate="footer">
+          <p-button [label]="card.buttonLabel" styleClass="w-full p-button-success"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="grid justify-content-center">
+    <div class="col-12 lg:col-7">
+      <p-card>
+        <h4 class="text-2xl font-bold mb-4">Send us a Message</h4>
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+          <div class="grid formgrid">
+            <div class="field col-12 md:col-6">
+              <label for="firstName" class="block">First Name *</label>
+              <input id="firstName" type="text" pInputText class="w-full" name="firstName" ngModel required>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="lastName" class="block">Last Name *</label>
+              <input id="lastName" type="text" pInputText class="w-full" name="lastName" ngModel required>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="email" class="block">Email *</label>
+              <input id="email" type="email" pInputText class="w-full" name="email" ngModel required email>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="phone" class="block">Phone</label>
+              <input id="phone" type="text" pInputText class="w-full" name="phone" ngModel>
+            </div>
+            <div class="field col-12">
+              <label for="interest" class="block">I'm interested in *</label>
+              <p-select id="interest" [options]="courses" placeholder="Select a course/topic" class="w-full"
+                name="interest" ngModel required></p-select>
+            </div>
+            <div class="field col-12">
+              <label for="message" class="block">Message *</label>
+              <textarea id="message" rows="5" pTextarea class="w-full" name="message" ngModel required
+                placeholder="Tell us about your learning goals..."></textarea>
+            </div>
+            <div class="field-checkbox col-12">
+              <p-checkbox name="updates" ngModel binary="true" inputId="updates"></p-checkbox>
+              <label for="updates" class="ml-2">I'd like to receive updates about new courses and special offers</label>
+            </div>
+          </div>
+          <p-button type="submit" label="Send Message" styleClass="mt-4 w-full p-button-success"></p-button>
+        </form>
+      </p-card>
+    </div>
+    <div class="col-12 lg:col-5">
+      <p-card styleClass="h-full">
+        <h4 class="text-2xl font-bold mb-4">Visit Our Office</h4>
+        <div class="mb-4">
+          <p class="font-bold">Address</p>
+          <p>123 Education Street<br>Tech City, TC 12345<br>India</p>
+        </div>
+        <div class="mb-4">
+          <p class="font-bold">Office Hours</p>
+          <div class="grid">
+            <div class="col-6">Monday - Friday</div>
+            <div class="col-6 text-right">9:00 AM - 8:00 PM IST</div>
+            <div class="col-6">Saturday</div>
+            <div class="col-6 text-right">10:00 AM - 6:00 PM IST</div>
+            <div class="col-6">Sunday</div>
+            <div class="col-6 text-right">Closed</div>
+          </div>
+        </div>
+        <div>
+          <p class="font-bold">Quick Support</p>
+          <div class="flex flex-wrap gap-3 mt-2">
+            <div class="flex align-items-center"><i class="pi pi-phone mr-2"></i> Phone Support</div>
+            <div class="flex align-items-center"><i class="pi pi-envelope mr-2"></i> Email Support</div>
+            <div class="flex align-items-center"><i class="pi pi-comment mr-2"></i> Live Chat</div>
+            <div class="flex align-items-center"><i class="pi pi-video mr-2"></i> Video Calls</div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="grid justify-content-center mt-6">
+    <div class="col-12 lg:col-7">
+      <!-- <p-card>
+        <h4 class="text-2xl font-bold mb-4">Frequently Asked Questions</h4>
+        <ul class="faq-list">
+          <li>
+            <p class="faq-title">Courses & Enrollment</p>
+            <ul>
+              <li>What courses do you offer?</li>
+              <li>How do I enroll in a course?</li>
+            </ul>
+          </li>
+          <li>
+            <p class="faq-title">Payment & Pricing</p>
+            <ul>
+              <li>What are the course fees?</li>
+              <li>Do you offer installment plans?</li>
+            </ul>
+          </li>
+          <li>
+            <p class="faq-title">Technical Support</p>
+            <ul>
+              <li>How do I access the course platform?</li>
+              <li>What if I have technical issues?</li>
+            </ul>
+          </li>
+        </ul>
+        <p-button label="View All FAQs" styleClass="w-full p-button-secondary"></p-button>
+      </p-card> -->
+
+      <!-- <p-card class="mt-4 p-4 emergency-card">
+        <div class="flex align-items-center gap-3">
+          <i class="pi pi-exclamation-triangle text-2xl text-danger"></i>
+          <div>
+            <p class="font-bold mb-1">Need Immediate Help?</p>
+            <p class="text-color-secondary mb-2">For urgent technical issues or enrollment deadlines</p>
+            <p-button label="Emergency Contact" styleClass="w-full p-button-warning"></p-button>
+          </div>
+        </div>
+      </p-card> -->
+    </div>
+  </div>
+</div>
